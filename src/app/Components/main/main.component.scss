@@ -1,5 +1,20 @@
 .container {
     & .col {
-        border: 1px black solid;
+        padding: 5px;
+    }
+
+    & .card {
+        height: 500px;
+        &:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+        
+        &-text {
+            font-size: 42px;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
     }
 }
