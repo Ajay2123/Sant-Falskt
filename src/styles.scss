@@ -1,13 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./assets/style/defaults.scss";
+
 .logo {
     text-align: center;
     font-family: 'Monoton', cursive;
     font-size: 24px;
-    color: #FF0055;
+    color: #fd5d93;
 }
 
 body {
-    font-family: 'Monoton', cursive;
-    font-family: 'Lato', sans-serif;
-    background-color: white;
+    font-family: 'Raleway', sans-serif, 'Monoton', cursive;
+    background-color: $dark;
+    font-size: .875rem;
+    font-weight: 200;
+    line-height: 1.5;
+    color: $darker;
+    text-align: left;
 }

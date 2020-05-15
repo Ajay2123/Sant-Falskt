@@ -1,1 +1,28 @@
-<p>general works!</p>
+<div class="container card bg-light card-body">
+    <div class="row">
+        <h1> {{this.currentQuestion.Question}}</h1>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="btn" (click)="nextQuestion()"><label
+                    class="btn-text">{{this.currentQuestion.Answer[0].value}}</label></div>
+        </div>
+        <div class="col">
+            <div class="btn" (click)="nextQuestion()"><label
+                    class="btn-text">{{this.currentQuestion.Answer[1].value}}</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="btn" (click)="nextQuestion()"><label
+                    class="btn-text">{{this.currentQuestion.Answer[2].value}}</label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="btn" (click)="nextQuestion()"><label
+                    class="btn-text">{{this.currentQuestion.Answer[3].value}}</label>
+            </div>
+        </div>
+    </div>
+</div>
