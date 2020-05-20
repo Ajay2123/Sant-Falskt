@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FileManagerService } from 'src/app/Services/fileManagerService/file-manager.service';
 
 @Component({
     selector: 'app-general',
@@ -9,15 +10,22 @@ export class GeneralComponent implements OnInit {
     questionsList: any;
     currentQuestionIndex: any;
     currentQuestion: any;
-    constructor() { }
+    answerSheet: any;
+    constructor(private fileManager: FileManagerService) { }
     ngOnInit() {
-        this.getQuestions();
+        this.answerSheet = [];
         this.currentQuestionIndex = 0;
-        console.log(this.questionsList);
-        this.setQuestion();
+        this.fileManager.getData("general").then((x: any) => {
+            if (x.data) {
+                this.questionsList = x.data;
+                this.setQuestion();
+            } else {
+                console.log("Error loading questions");
+            }
+        });
     }
     nextQuestion() {
-        if (!this.isValidNextQuesiton()) { this.completeExam(); }
+        if (!this.isValidNextQuesiton()) { this.completeExam(); return ; }
         this.currentQuestionIndex++;
         this.setQuestion();
     }
@@ -30,60 +38,13 @@ export class GeneralComponent implements OnInit {
     setQuestion() {
         this.currentQuestion = this.questionsList.List[this.currentQuestionIndex];
         this.shuffleAnswers();
-        console.log(this.currentQuestion);
     }
     shuffleAnswers() {
         this.currentQuestion.Answer.sort(() => Math.random() - 0.5);
     }
-    getQuestions() {
-        this.questionsList = {
-            "List": [
-                {
-                    "Question": "Below git command is used to list all branches in the repository.",
-                    "Answer": [
-                        { key: 1, value: "branch" },
-                        { key: 2, value: "ls" },
-                        { key: 3, value: "showBranches" },
-                        { key: 4, value: "listBranches" }
-                    ]
-                },
-                {
-                    "Question": "'Do no evil' is the tag line of .......",
-                    'Answer': [
-                        { key: 1, value: "Google" },
-                        { key: 2, value: "Apple" },
-                        { key: 3, value: "Microsoft" },
-                        { key: 4, value: "Facebook" }
-                    ]
-                },
-                {
-                    "Question": "Which IT company's nickname is ' The Big Blue '",
-                    "Answer": [
-                        { key: 1, value: "IBM" },
-                        { key: 2, value: "Facebook" },
-                        { key: 3, value: "Orkut" },
-                        { key: 4, value: "None of the above" }
-                    ]
-                },
-                {
-                    "Question": "What is mean by Liveware?",
-                    "Answer": [
-                        { key: 1, value: "People who work with the computer" },
-                        { key: 2, value: "Wearable IOT gadgets" },
-                        { key: 3, value: "Fake antivirus softwares" },
-                        { key: 4, value: "None of the above" }
-                    ]
-                },
-                {
-                    "Question": "What is SQL?",
-                    "Answer": [
-                        { key: 1, value: "Structured Query Language" },
-                        { key: 2, value: "Sequential Query Language" },
-                        { key: 3, value: "Superior Query Language" },
-                        { key: 4, value: "Serious Query Language" }
-                    ]
-                }
-            ]
-        };
+    selectedAnswer(_answerKey) {
+        const data = { questionKey: this.currentQuestionIndex + 1, answerKey: _answerKey };
+        this.answerSheet.push(data);
+        this.nextQuestion();
     }
 }

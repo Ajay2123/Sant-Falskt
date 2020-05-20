@@ -8,21 +8,23 @@ import { GeneralComponent } from './Components/general/general.component';
 import { DesignComponent } from './Components/design/design.component';
 import { ProgrammingComponent } from './Components/programming/programming.component';
 import { SustainablityComponent } from './Components/sustainablity/sustainablity.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainComponent,
-    GeneralComponent,
-    DesignComponent,
-    ProgrammingComponent,
-    SustainablityComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        MainComponent,
+        GeneralComponent,
+        DesignComponent,
+        ProgrammingComponent,
+        SustainablityComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
