@@ -1,0 +1,38 @@
+<div *ngIf="!examCompleted">
+    <div *ngIf="this.currentQuestion" class="container card bg-light card-body">
+        <div class="row">
+            <h1> {{this.currentQuestion.Question}}</h1>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="btn" (click)="selectedAnswer(this.currentQuestion.Answer[0].key)"><label
+                        class="btn-text">{{this.currentQuestion.Answer[0].value}}</label></div>
+            </div>
+            <div class="col">
+                <div class="btn" (click)="selectedAnswer(this.currentQuestion.Answer[1].key)"><label
+                        class="btn-text">{{this.currentQuestion.Answer[1].value}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="btn" (click)="selectedAnswer(this.currentQuestion.Answer[2].key)"><label
+                        class="btn-text">{{this.currentQuestion.Answer[2].value}}</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="btn" (click)="selectedAnswer(this.currentQuestion.Answer[3].key)"><label
+                        class="btn-text">{{this.currentQuestion.Answer[3].value}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!this.currentQuestion" class="container card bg-light card-body">
+        <div class="row">
+            <h1 style="text-transform: capitalize;">
+                Loading {{this.currentSubject}} Questions. . . .
+            </h1>
+        </div>
+    </div>
+</div>
+<app-form *ngIf="examCompleted" [answerSheet]="answerSheet"></app-form>

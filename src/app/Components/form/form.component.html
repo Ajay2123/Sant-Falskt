@@ -1,0 +1,10 @@
+<div *ngIf="!showResult" class="container card bg-light card-body">
+    <form [formGroup]="form">
+        <input type="text" formControlName="name" placeholder="John Wick">
+        <input type="text" formControlName="email" placeholder="JohnWick@outlook.com">
+        <div class="btn dark" (click)="submit()">
+            <label class="btn-text">Submit</label>
+        </div>
+    </form>
+</div>
+<app-result *ngIf="showResult" [result]="result"></app-result>

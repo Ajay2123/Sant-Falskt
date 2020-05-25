@@ -1,12 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/style/defaults.scss";
 
-.logo {
-    text-align: center;
-    font-family: 'Monoton', cursive;
-    font-size: 24px;
-    color: #fd5d93;
-}
+
 
 body {
     font-family: 'Raleway', sans-serif, 'Monoton', cursive;
@@ -16,4 +11,61 @@ body {
     line-height: 1.5;
     color: $darker;
     text-align: left;
+}
+
+.logo {
+    text-align: center;
+    font-family: 'Monoton', cursive;
+    font-size: 24px;
+    color: #fd5d93;
+    cursor: pointer;
+}
+
+
+.card {
+    padding: 3%;
+    width: 100%;
+    height: calc(100vh - (150px));
+
+    &.container.card-body.bg-light {
+        background-color: $default !important;
+        color: $white !important;
+    }
+
+    h1 {
+        padding-top: 15vh;
+        padding-bottom: 15vh;
+        font-weight: 200;
+        padding-left: 15px;
+    }
+
+    .row {
+        padding-bottom: 5vh;
+    }
+
+    .btn {
+        width: inherit;
+        height: 7vh;
+        cursor: pointer;
+        border: 1px solid $danger;
+        background-color: $default !important;
+
+        & label {
+            font-size: 1vw;
+            font-weight: 300;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: $danger;
+        }
+
+        &.dark {
+            background-color: $danger !important;
+
+            & label {
+                color: $white !important;
+            }
+        }
+    }
 }

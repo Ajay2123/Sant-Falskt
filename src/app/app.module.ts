@@ -4,24 +4,27 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { MainComponent } from './Components/main/main.component';
 import { AppRoutingModule } from './app-routing.module';
-import { GeneralComponent } from './Components/general/general.component';
-import { DesignComponent } from './Components/design/design.component';
-import { ProgrammingComponent } from './Components/programming/programming.component';
-import { SustainablityComponent } from './Components/sustainablity/sustainablity.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ExamComponent } from './Components/exam/exam.component';
+import { FormComponent } from './Components/form/form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ResultComponent } from './Components/result/result.component';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         MainComponent,
-        GeneralComponent,
-        DesignComponent,
-        ProgrammingComponent,
-        SustainablityComponent
+        ExamComponent,
+        FormComponent,
+        ResultComponent,
+        DashboardComponent
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
         AppRoutingModule
     ],
     providers: [],

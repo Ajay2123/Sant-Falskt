@@ -1,16 +1,22 @@
-<label class="logo" for="Logo">SantFalskt</label>
+<div *ngIf="!selectedSubject" class="row">
+    <div class="col-6 col-md-4"><label class="logo" (click)="refresh()">SantFalskt</label></div>
+    <div class="col-6 col-md-4"></div>
+    <div class="col-6 col-md-4"><label class="logo" (click)="dashboard()">Dashboard</label></div>
+</div>
 
-<div class="container">
+<label *ngIf="selectedSubject" class="logo" (click)="refresh()" for="Logo">SantFalskt</label>
+
+<div *ngIf="!selectedSubject" class="container">
     <div class="row">
         <div class="col">
-            <div (click)="routeGeneral()" class="card  ">
+            <div (click)="selectSubject('general')" class="card  ">
                 <div class="card-text">
                     <label class="card-title">General</label>
                 </div>
             </div>
         </div>
         <div class="col">
-            <div (click)="routeDesign()" class="card ">
+            <div (click)="selectSubject('design')" class="card ">
                 <div class="card-text">
                     <label class="card-title">Design</label>
                 </div>
@@ -18,14 +24,14 @@
         </div>
         <div class="w-100"></div>
         <div class="col">
-            <div (click)="routeProgramming()" class="card">
+            <div (click)="selectSubject('programming')" class="card">
                 <div class="card-text">
                     <label class="card-title">Programming</label>
                 </div>
             </div>
         </div>
         <div class="col">
-            <div (click)="routeSustainability()" class="card">
+            <div (click)="selectSubject('sustainablity')" class="card">
                 <div class="card-text">
                     <label class="card-title">Sustainablity</label>
                 </div>
@@ -33,3 +39,4 @@
         </div>
     </div>
 </div>
+<app-exam *ngIf="selectedSubject" [currentSubject]="selectedSubject"></app-exam>

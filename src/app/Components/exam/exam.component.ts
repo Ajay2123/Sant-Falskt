@@ -1,21 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { FileManagerService } from 'src/app/Services/fileManagerService/file-manager.service';
 
 @Component({
-    selector: 'app-general',
-    templateUrl: './general.component.html',
-    styleUrls: ['./general.component.scss']
+    selector: 'app-exam',
+    templateUrl: './exam.component.html',
+    styleUrls: ['./exam.component.scss']
 })
-export class GeneralComponent implements OnInit {
+export class ExamComponent implements OnInit, AfterViewInit {
+    @Input() currentSubject;
     questionsList: any;
     currentQuestionIndex: any;
     currentQuestion: any;
     answerSheet: any;
+    examCompleted: boolean;
     constructor(private fileManager: FileManagerService) { }
     ngOnInit() {
+        this.examCompleted = false;
+        console.log(this.currentSubject);
         this.answerSheet = [];
         this.currentQuestionIndex = 0;
-        this.fileManager.getData("general").then((x: any) => {
+        this.fileManager.getData(this.currentSubject).then((x: any) => {
             if (x.data) {
                 this.questionsList = x.data;
                 this.setQuestion();
@@ -24,8 +28,11 @@ export class GeneralComponent implements OnInit {
             }
         });
     }
+    ngAfterViewInit() {
+
+    }
     nextQuestion() {
-        if (!this.isValidNextQuesiton()) { this.completeExam(); return ; }
+        if (!this.isValidNextQuesiton()) { this.completeExam(); return; }
         this.currentQuestionIndex++;
         this.setQuestion();
     }
@@ -33,7 +40,8 @@ export class GeneralComponent implements OnInit {
         return this.currentQuestionIndex + 1 <= this.questionsList.List.length - 1 ? true : false;
     }
     completeExam() {
-        alert("exam is completed");
+        this.answerSheet.push(this.currentSubject);
+        this.examCompleted = true;
     }
     setQuestion() {
         this.currentQuestion = this.questionsList.List[this.currentQuestionIndex];

@@ -7,20 +7,20 @@ import { Router } from '@angular/router';
     styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+    selectedSubject: any;
     constructor(private router: Router) { }
 
     ngOnInit() {
+        this.selectedSubject = undefined;
     }
-    routeGeneral() {
-        this.router.navigate(['general']);
+    selectSubject(subject) {
+        this.selectedSubject = subject;
+        console.log(subject);
     }
-    routeDesign() {
-        this.router.navigate(['design']);
+    refresh() {
+        this.selectedSubject = undefined;
     }
-    routeProgramming() {
-        this.router.navigate(['programming']);
-    }
-    routeSustainability() {
-        this.router.navigate(['sustainablity']);
+    dashboard() {
+        this.router.navigate(["dashboard"]);
     }
 }

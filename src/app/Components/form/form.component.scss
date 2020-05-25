@@ -1,0 +1,21 @@
+@import "../../../assets/style/defaults.scss";
+
+.container {
+    padding-top: 27vh;
+}
+form {
+    height: inherit;
+    width: inherit;
+}
+input {
+    width: inherit;
+    height: 7vh;
+    cursor: pointer;
+    border: 1px solid $danger;
+    background-color: $default !important;
+    font-size: 1vw;
+    font-weight: 300;
+    color: $danger;
+    margin-bottom: 5vh;
+    padding: 0 25px;
+}
